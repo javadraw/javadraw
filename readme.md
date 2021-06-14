@@ -1,3 +1,5 @@
+![javaDraw](https://i.ibb.co/HxTh3VG/javadraw.png)
+
 This is a simple graphics library designed to make graphics
 and input simple and synchronized, and serves as a Java-based sister library to [pyDraw](https://github.com/pydraw/pydraw).
 
