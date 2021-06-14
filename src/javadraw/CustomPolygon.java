@@ -3,6 +3,9 @@ package javadraw;
 import javadraw.internal.FilledPolygon;
 import javadraw.internal.FramedPolygon;
 
+/**
+ * A custom polygon with user-defined vertices.
+ */
 public class CustomPolygon extends Renderable implements CustomRenderable {
 
     private final Object[] parameterValues;

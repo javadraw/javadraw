@@ -3,6 +3,9 @@ package javadraw;
 import javadraw.internal.FilledRect;
 import javadraw.internal.FramedRect;
 
+/**
+ * Represents a classical rectangular Object on the Screen.
+ */
 public class Rectangle extends Renderable {
 
     private final Object[] parameterValues;

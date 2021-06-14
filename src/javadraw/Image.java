@@ -2,6 +2,13 @@ package javadraw;
 
 import javadraw.internal.VisibleImage;
 
+/**
+ * Represents an image rendered onto the Screen. Supported formats include (but aren't limited to):
+ *      - PNG
+ *      - JPG
+ *      - GIF
+ *      - and more...
+ */
 public class Image extends Renderable implements CustomRenderable {
     private final Object[] parameterValues;
 

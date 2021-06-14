@@ -3,6 +3,9 @@ package javadraw;
 import javadraw.internal.FilledPolygon;
 import javadraw.internal.FramedPolygon;
 
+/**
+ * Represents any Triangular object on Screen. Renders with the base at the bottom.
+ */
 public class Triangle extends Renderable {
 
     private final Object[] parameterValues;

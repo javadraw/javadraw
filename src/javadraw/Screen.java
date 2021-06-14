@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The accessor to manage and use the Window. Stores objects rendered on the Window and manages the Window's appearance.
+ */
 public class Screen {
 
     protected DrawingCanvas canvas;

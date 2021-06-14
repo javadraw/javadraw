@@ -6,9 +6,12 @@ import javadraw.internal.SneakyThrow;
 import java.lang.reflect.Field;
 import java.util.Objects;
 
+/**
+ * Represents a Key, allowing for easy comparison in keyEvent handlers.
+ */
 public class Key {
 
-    public static final Key Back_quote = new Key("Back_quote");
+    public static final Key BACK_QUOTE = new Key("Back_quote");
     public static final Key ONE = new Key("1");
     public static final Key TWO = new Key("2");
     public static final Key THREE = new Key("3");
@@ -19,10 +22,10 @@ public class Key {
     public static final Key EIGHT = new Key("8");
     public static final Key NINE = new Key("9");
     public static final Key TEN = new Key("0");
-    public static final Key Minus = new Key("Minus");
-    public static final Key Equals = new Key("Equals");
-    public static final Key Back_space = new Key("Back_space");
-    public static final Key Tab = new Key("Tab");
+    public static final Key MINUS = new Key("Minus");
+    public static final Key EQUALS = new Key("Equals");
+    public static final Key BACKSPACE = new Key("Back_space");
+    public static final Key TAB = new Key("Tab");
     public static final Key Q = new Key("Q");
     public static final Key W = new Key("W");
     public static final Key E = new Key("E");
@@ -33,10 +36,10 @@ public class Key {
     public static final Key I = new Key("I");
     public static final Key O = new Key("O");
     public static final Key P = new Key("P");
-    public static final Key Open_bracket = new Key("Open_bracket");
-    public static final Key Close_bracket = new Key("Close_bracket");
-    public static final Key Back_slash = new Key("Back_slash");
-    public static final Key Caps_lock = new Key("Caps_lock");
+    public static final Key OPEN_BRACKET = new Key("Open_bracket");
+    public static final Key CLOSE_BRACKET = new Key("Close_bracket");
+    public static final Key BACK_SLASH = new Key("Back_slash");
+    public static final Key CAPS_LOCK = new Key("Caps_lock");
     public static final Key A = new Key("A");
     public static final Key S = new Key("S");
     public static final Key D = new Key("D");
@@ -46,10 +49,10 @@ public class Key {
     public static final Key J = new Key("J");
     public static final Key K = new Key("K");
     public static final Key L = new Key("L");
-    public static final Key Semicolon = new Key("Semicolon");
-    public static final Key Quote = new Key("Quote");
-    public static final Key Enter = new Key("Enter");
-    public static final Key Shift = new Key("Shift");
+    public static final Key SEMICOLON = new Key("Semicolon");
+    public static final Key QUOTE = new Key("Quote");
+    public static final Key ENTER = new Key("Enter");
+    public static final Key SHIFT = new Key("Shift");
     public static final Key Z = new Key("Z");
     public static final Key X = new Key("X");
     public static final Key C = new Key("C");
@@ -57,13 +60,13 @@ public class Key {
     public static final Key B = new Key("B");
     public static final Key N = new Key("N");
     public static final Key M = new Key("M");
-    public static final Key Comma = new Key("Comma");
-    public static final Key Period = new Key("Period");
-    public static final Key Slash = new Key("Slash");
-    public static final Key Control = new Key("Control");
-    public static final Key Alt = new Key("Alt");
-    public static final Key Space = new Key("Space");
-    public static final Key Escape = new Key("Escape");
+    public static final Key COMMA = new Key("Comma");
+    public static final Key PERIOD = new Key("Period");
+    public static final Key SLASH = new Key("Slash");
+    public static final Key CONTROL = new Key("Control");
+    public static final Key ALT = new Key("Alt");
+    public static final Key SPACE = new Key("Space");
+    public static final Key ESCAPE = new Key("Escape");
     public static final Key F1 = new Key("F1");
     public static final Key F2 = new Key("F2");
     public static final Key F3 = new Key("F3");

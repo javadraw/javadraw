@@ -3,6 +3,9 @@ package javadraw;
 import javadraw.internal.FilledPolygon;
 import javadraw.internal.FramedPolygon;
 
+/**
+ * A regular polygon with a specified "n" number of sides.
+ */
 public class Polygon extends Renderable {
 
     private final Object[] parameterValues;

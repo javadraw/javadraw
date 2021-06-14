@@ -2,6 +2,9 @@ package javadraw;
 
 import javadraw.internal.Drawable1DInterface;
 
+/**
+ * Represents a Line on the Screen. Has two positions, referred to as "pos1" and "pos2".
+ */
 public class Line implements DrawableObject {
 
     private Screen screen;

@@ -3,6 +3,9 @@ package javadraw;
 import javadraw.internal.FilledOval;
 import javadraw.internal.FramedOval;
 
+/**
+ * Any circular or oval-like Object on the Screen.
+ */
 public class Oval extends Renderable {
 
     private final Object[] parameterValues;

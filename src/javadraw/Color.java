@@ -6,6 +6,9 @@ import lombok.SneakyThrows;
 
 import java.lang.reflect.Field;
 
+/**
+ * Represents a Color in the RGB format. Contains some presets with names.
+ */
 public class Color {
 
     /**

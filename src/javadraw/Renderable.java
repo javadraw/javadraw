@@ -76,7 +76,7 @@ public abstract class Renderable implements DrawableObject {
      * @param x the new x-value to set
      * @return the new x-value
      */
-    double x(double x) {
+    public double x(double x) {
         location.x(x);
 
         this.moveTo(location);
