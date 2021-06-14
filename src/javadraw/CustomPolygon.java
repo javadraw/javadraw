@@ -3,7 +3,7 @@ package javadraw;
 import javadraw.internal.FilledPolygon;
 import javadraw.internal.FramedPolygon;
 
-public class CustomPolygon extends Renderable {
+public class CustomPolygon extends Renderable implements CustomRenderable {
 
     private final Object[] parameterValues;
 

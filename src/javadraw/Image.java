@@ -2,7 +2,7 @@ package javadraw;
 
 import javadraw.internal.VisibleImage;
 
-public class Image extends Renderable {
+public class Image extends Renderable implements CustomRenderable {
     private final Object[] parameterValues;
 
     private final String path;
