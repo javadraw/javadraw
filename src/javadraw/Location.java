@@ -89,4 +89,23 @@ public class Location {
         this.location = new javadraw.internal.Location(location.x(), location.y());
     }
 
+    /**
+     * Get the distance between this Location and another point
+     * @param x the x-coordinate of the position to check
+     * @param y the y-coordinate of the position to check
+     * @return the distance between this Location and the one passed.
+     */
+    public double distance(double x, double y) {
+        return Math.sqrt(Math.pow((x - this.x()), 2) + Math.pow((y - this.y()), 2));
+    }
+
+    /**
+     * Get the distance between this Location and another point
+     * @param location the Location to check
+     * @return thet distance between this Location and the one passed.
+     */
+    public double distance(Location location) {
+        return this.distance(location.x(), location.y());
+    }
+
 }
