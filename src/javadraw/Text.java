@@ -86,10 +86,19 @@ public class Text extends Renderable {
         this(screen, text, location.x(), location.y());
     }
 
+    /**
+     * Get the String displayed by the Text
+     * @return what's displayed by the Text
+     */
     public String text() {
         return ((javadraw.internal.Text) this.object).getText();
     }
 
+    /**
+     * Set the String displayed by the Text
+     * @param text the new String to display
+     * @return the new String passed
+     */
     public String text(String text) {
         ((javadraw.internal.Text) this.object).setText(text);
 
@@ -97,10 +106,19 @@ public class Text extends Renderable {
         return text;
     }
 
+    /**
+     * Get the font displayed by the Text
+     * @return a String representing the name of the Font
+     */
     public String font() {
         return ((javadraw.internal.Text) this.object).getFont().getName();
     }
 
+    /**
+     * Set the font displayed by the Text
+     * @param font the new font to set
+     * @return the new font passed
+     */
     public String font(String font) {
         ((javadraw.internal.Text) this.object).setFont(font);
 
@@ -108,10 +126,19 @@ public class Text extends Renderable {
         return this.font();
     }
 
+    /**
+     * Get the font-size of the Text displayed
+     * @return the font size (as an integer)
+     */
     public int size() {
         return ((javadraw.internal.Text) this.object).getFont().getSize();
     }
 
+    /**
+     * Set the font-size of the Text displayed
+     * @param size the new font-size to set to
+     * @return the new font-size
+     */
     public int size(int size) {
         ((javadraw.internal.Text) this.object).setFontSize(size);
 
@@ -119,6 +146,10 @@ public class Text extends Renderable {
         return this.size();
     }
 
+    /**
+     * Get the alignment of the Text displayed
+     * @return the alignment, as a String. Could be: "LEFT", "CENTER", or "RIGHT".
+     */
     public String align() {
         double alignment = ((javadraw.internal.Text) this.object).getHorizontalAlignment();
         if(alignment == javadraw.internal.Text.LEFT) {
@@ -130,6 +161,11 @@ public class Text extends Renderable {
         }
     }
 
+    /**
+     * Set the alignment of the Text displayed
+     * @param align the new alignment to set to (either "LEFT", "CENTER", or "RIGHT", case insensitive).
+     * @return the new alignment
+     */
     public String align(String align) {
         double alignment = javadraw.internal.Text.LEFT;
 
@@ -149,20 +185,38 @@ public class Text extends Renderable {
         return align.toUpperCase();
     }
 
+    /**
+     * Get whether the Text displayed is bold or not
+     * @return the Text's bold-state
+     */
     public boolean bold() {
         return ((javadraw.internal.Text) this.object).getFont().isBold();
     }
 
+    /**
+     * Set the bold-state of the Text displayed
+     * @param bold the new bold-state to be set
+     * @return the new bold state
+     */
     public boolean bold(boolean bold) {
         ((javadraw.internal.Text) this.object).setBold(bold);
         this.update();
         return bold;
     }
 
+    /**
+     * Get whether the Text displayed is italic or not
+     * @return the Text's italic-state
+     */
     public boolean italic() {
         return ((javadraw.internal.Text) this.object).getFont().isItalic();
     }
 
+    /**
+     * Set the italic-state of the Text displayed
+     * @param italic the new italic-state to be set
+     * @return the new italic state
+     */
     public boolean italic(boolean italic) {
         ((javadraw.internal.Text) this.object).setItalic(italic);
         this.update();
