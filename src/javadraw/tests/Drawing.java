@@ -1,4 +1,6 @@
-package javadraw;
+package javadraw.tests;
+
+import javadraw.*;
 
 class Drawing extends Window {
 

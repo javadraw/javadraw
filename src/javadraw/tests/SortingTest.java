@@ -1,4 +1,6 @@
-package javadraw;
+package javadraw.tests;
+
+import javadraw.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

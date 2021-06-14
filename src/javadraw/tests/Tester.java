@@ -1,5 +1,6 @@
-package javadraw;
+package javadraw.tests;
 
+import javadraw.*;
 import javadraw.internal.ActiveObject;
 
 class Tester extends Window {
