@@ -108,4 +108,11 @@ public class Location {
         return this.distance(location.x(), location.y());
     }
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "x=" + x() + ", " +
+                "y=" + y() +
+                '}';
+    }
 }

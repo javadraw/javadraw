@@ -2,7 +2,7 @@ package javadraw.tests;
 
 import javadraw.*;
 
-class JavaDrawTest extends Window {
+public class JavaDrawTest extends Window {
 
     public static void main(String[] args) {
         Window.open();
@@ -25,12 +25,16 @@ class JavaDrawTest extends Window {
             polygon.fill(!polygon.fill());
         } else
             polygon = (Polygon) polygon.clone();
+
+        print(location);
     }
 
     public void keyDown(Key key) {
         print(key == Key.A);
         print(key.equals(Key.A));
         print("----------");
+
+        print(key.character());
     }
 
 }

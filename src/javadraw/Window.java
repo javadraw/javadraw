@@ -3,6 +3,8 @@ package javadraw;
 import javadraw.internal.WindowController;
 import javadraw.internal.WindowThread;
 
+import java.lang.reflect.Constructor;
+
 /**
  * The primary thread-controller for the application, the Window passes inputs and is meant to be the parent of any javaDraw program.
  */
@@ -22,6 +24,7 @@ public class Window {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+            System.out.println("Class must be public in order to use javaDraw!");
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
@@ -39,6 +42,7 @@ public class Window {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+            System.out.println("Class must be public in order to use javaDraw!");
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
@@ -56,6 +60,7 @@ public class Window {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+            System.out.println("Class must be public in order to use javaDraw!");
         } catch (InstantiationException e) {
             e.printStackTrace();
         }

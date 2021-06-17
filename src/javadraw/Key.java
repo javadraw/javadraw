@@ -4,6 +4,7 @@ import javadraw.errors.InvalidArgumentException;
 import javadraw.internal.SneakyThrow;
 
 import java.lang.reflect.Field;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -78,6 +79,11 @@ public class Key {
     public static final Key F9 = new Key("F9");
     public static final Key F10 = new Key("F10");
 
+    public static final Key UP = new Key("Up");
+    public static final Key DOWN = new Key("Down");
+    public static final Key LEFT = new Key("Left");
+    public static final Key RIGHT = new Key("Right");
+
     String character;
     public Key(String character) {
         this.character = character;
@@ -87,7 +93,7 @@ public class Key {
         Key key;
 
         try {
-            Field field = Key.class.getField(keyChar);
+            Field field = Key.class.getField(keyChar.toUpperCase());
             key = (Key) field.get(null);
         } catch (Exception e) {
             key = null;
