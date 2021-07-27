@@ -14,11 +14,13 @@ public class Triangle extends Renderable {
         super(screen, location, width, height, color, border, fill, rotation, visible);
         this.parameterValues = new Object[] {screen, location, width, height, color, border, fill, rotation, visible};
 
-        if(fill) {
-            this.object = new FilledPolygon(3, location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
-        } else {
-            this.object = new FramedPolygon(3, location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
-        }
+//        if(fill) {
+//            this.object = new FilledPolygon(3, location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
+//        } else {
+//            this.object = new FramedPolygon(3, location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
+//        }
+
+        this.object = new javadraw.internal.Triangle(location.x(), location.y(), width, height, rotation, fill, color.toAWT(), screen.canvas);
 
         this.visible(visible);
     }

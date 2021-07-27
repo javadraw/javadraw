@@ -14,8 +14,12 @@ public class JavaDrawTest extends Window {
         rectangle = new Rectangle(screen, 150, 150, 50, 50, Color.BLUE);
         rectangle.border(Color.BLACK);
 
-        polygon = new Polygon(screen, 5, 300, 300, 50, 50, Color.YELLOW);
+        polygon = new Polygon(screen, 5, 200, 150, 50, 50, Color.YELLOW);
         polygon.border(Color.RED);
+
+        // javadraw.internal.Triangle triangle = new javadraw.internal.Triangle(0, 0, 150, 150, true, java.awt.Color.BLACK, screen.canvas);
+        Triangle triangle = new Triangle(screen, 250, 150, 50, 50, Color.RED);
+        // Polygon otherPoly = new Polygon(screen, 3, 200, 150, 50, 50);
     }
 
     public void mouseDown(int button, Location location) {
