@@ -4,6 +4,7 @@ import javadraw.internal.Drawable2DInterface;
 import javadraw.internal.ObjectDrawShape;
 import javadraw.internal.Resizable2DInterface;
 import javadraw.internal.SneakyThrow;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.PathIterator;
@@ -114,26 +115,28 @@ public abstract class Renderable implements DrawableObject {
     }
 
     /**
-     * Get the centroid/center of the Renderable
+     * Get the center of the Renderable
      * @return a Location representing the centroid of the Renderable
      */
     public Location center() {
-        double sumX = 0;
-        double sumY = 0;
+//        double sumX = 0;
+//        double sumY = 0;
+//
+//        for(int i = 0; i < this.vertices().length; i++) {
+//            double x = this.vertices()[i].x();
+//            double y = this.vertices()[i].y();
+//
+//            sumX += x;
+//            sumY += y;
+//        }
+//
+//
+//        double centroid_x = sumX / this.vertices().length;
+//        double centroid_y = sumY / this.vertices().length;
+//
+//        return new Location(centroid_x, centroid_y);
 
-        for(int i = 0; i < this.vertices().length; i++) {
-            double x = this.vertices()[i].x();
-            double y = this.vertices()[i].y();
-
-            sumX += x;
-            sumY += y;
-        }
-
-
-        double centroid_x = sumX / this.vertices().length;
-        double centroid_y = sumY / this.vertices().length;
-
-        return new Location(centroid_x, centroid_y);
+        return new Location(this.x() + this.width() / 2, this.y() + this.height() / 2);
     }
 
     /**
@@ -417,6 +420,25 @@ public abstract class Renderable implements DrawableObject {
     }
 
     /**
+     * Move the Renderable forward by distance at its current heading (rotation/angle)
+     * @param distance the distance to move forward (hypotenuse)
+     */
+    public void forward(double distance) {
+        double dx = Math.sin(Math.toRadians(this.angle));
+        double dy = -Math.cos(Math.toRadians(this.angle));
+
+        this.move(dx, dy);
+    }
+
+    /**
+     * Move the Renderable backward by distance at its current heading (rotation/angle)
+     * @param distance the distance to move backward (hypotenuse)
+     */
+    public void backward(double distance) {
+        this.forward(-distance);
+    }
+
+    /**
      * Get the visibility value of the Renderable
      * @return whether or not the Renderable is visible
      */
@@ -454,6 +476,8 @@ public abstract class Renderable implements DrawableObject {
      * @return an array of Locations representing the vertices.
      */
     public Location[] vertices() {
+        SneakyThrow.sneakyThrow(new NotImplementedException());
+
         AffineTransform transform = AffineTransform.getRotateInstance(this.rotation(),
                 this.x() + this.width() / 2, this.y() + this.height() / 2);
 

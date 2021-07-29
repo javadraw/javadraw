@@ -3,7 +3,7 @@ package javadraw.tests;
 import javadraw.*;
 import javadraw.internal.ActiveObject;
 
-class Tester extends Window {
+public class Tester extends Window {
 
     public static void main(String[] args) {
         Window.open(800, 600);
