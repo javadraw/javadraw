@@ -14,12 +14,21 @@ public class Window {
     WindowController controller;
     protected Screen screen;
 
+    /**
+     * Open the Window with a specified width, height and title
+     * @param width in pixels
+     * @param height in pixels
+     * @param title shown in the titlebar
+     * @return the Window opened
+     */
     public static Window open(int width, int height, String title) {
         try {
             Class<?> clazz = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
 
             Window window = (Window) clazz.newInstance();
             window._open(width, height, title);
+
+            return window;
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -32,12 +41,20 @@ public class Window {
         return null;
     }
 
+    /**
+     * Open the Window with a specified width and height and the default title: "javaDraw"
+     * @param width in pixels
+     * @param height in pixels
+     * @return the Window opened
+     */
     public static Window open(int width, int height) {
         try {
             Class<?> clazz = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
 
             Window window = (Window) clazz.newInstance();
             window._open(width, height, "javaDraw");
+
+            return window;
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -50,12 +67,17 @@ public class Window {
         return null;
     }
 
+    /**
+     * Open the Window with the default width, height (800 x 600 pixels) and title ("javaDraw")
+     * @return the Window opened
+     */
     public static Window open() {
         try {
             Class<?> clazz = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
 
             Window window = (Window) clazz.newInstance();
             window._open(800, 600, "javaDraw");
+            return window;
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -66,6 +88,41 @@ public class Window {
         }
 
         return null;
+    }
+
+    /**
+     * Open the Window with a specified width, height and title
+     * @param window the Window instance to open
+     * @param width in pixels
+     * @param height in pixels
+     * @param title shown in the titlebar
+     * @return the Window opened
+     */
+    public static Window open(Window window, int width, int height, String title) {
+        window._open(width, height, title);
+        return window;
+    }
+
+    /**
+     * Open the Window with a specified width and height and the default title: "javaDraw"
+     * @param window the Window instance to open
+     * @param width in pixels
+     * @param height in pixels
+     * @return the Window opened
+     */
+    public static Window open(Window window, int width, int height) {
+        window._open(width, height, "javaDraw");
+        return window;
+    }
+
+    /**
+     * Open the Window with the default width, height (800 x 600 pixels) and title ("javaDraw")
+     * @param window the Window instance to open
+     * @return the Window opened
+     */
+    public static Window open(Window window) {
+        window._open(800, 600, "javaDraw");
+        return window;
     }
 
     public Window() {

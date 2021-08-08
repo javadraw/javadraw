@@ -424,8 +424,8 @@ public abstract class Renderable implements DrawableObject {
      * @param distance the distance to move forward (hypotenuse)
      */
     public void forward(double distance) {
-        double dx = Math.sin(Math.toRadians(this.angle));
-        double dy = -Math.cos(Math.toRadians(this.angle));
+        double dx = Math.sin(Math.toRadians(this.angle)) * distance;
+        double dy = -Math.cos(Math.toRadians(this.angle)) * distance;
 
         this.move(dx, dy);
     }
