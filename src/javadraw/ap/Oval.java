@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.FilledOval;
 import javadraw.internal.FramedOval;
@@ -17,13 +17,13 @@ public class Oval extends Renderable {
         // System.out.println("Fill: " + fill);
         if(fill) {
             // System.out.println("Filled");
-            this.object = new FilledOval(location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
+            this.object = new FilledOval(location.getX(), location.getY(), width, height, rotation, color.toAWT(), screen.canvas);
         } else {
             // System.out.println("Framed");
-            this.object = new FramedOval(location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
+            this.object = new FramedOval(location.getX(), location.getY(), width, height, rotation, color.toAWT(), screen.canvas);
         }
 
-        this.visible(visible);
+        this.setVisible(visible);
     }
 
     public Oval(Screen screen, double x, double y, double width, double height, Color color, Color border, boolean fill, double rotation, boolean visible) {
@@ -31,7 +31,7 @@ public class Oval extends Renderable {
     }
 
     public Oval(Screen screen, Location start, Location end, Color color, Color border, boolean fill, double rotation, boolean visible) {
-        this(screen, start, end.x() - start.x(), end.y() - start.y(), color, border, fill, rotation, visible);
+        this(screen, start, end.getX() - start.getX(), end.getY() - start.getY(), color, border, fill, rotation, visible);
     }
 
     public Oval(Screen screen, double x, double y, double width, double height, Color color, double rotation) {
@@ -51,7 +51,7 @@ public class Oval extends Renderable {
     }
 
     public Oval(Screen screen, Location location, double width, double height, Color color, double rotation) {
-        this(screen, location.x(), location.y(), width, height, color, rotation);
+        this(screen, location.getX(), location.getY(), width, height, color, rotation);
     }
 
     public Oval(Screen screen, Location location, double width, double height, double rotation) {

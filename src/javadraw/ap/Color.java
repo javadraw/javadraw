@@ -1,6 +1,6 @@
-package javadraw;
+package javadraw.ap;
 
-import javadraw.errors.InvalidArgumentException;
+import javadraw.ap.errors.InvalidArgumentException;
 import javadraw.internal.SneakyThrow;
 import lombok.SneakyThrows;
 
@@ -203,9 +203,9 @@ public class Color {
      * @param color Color to duplicate
      */
     public Color(Color color) {
-        this.r = color.red();
-        this.g = color.blue();
-        this.b = color.blue();
+        this.r = color.getRed();
+        this.g = color.getBlue();
+        this.b = color.getBlue();
     }
 
     /**
@@ -224,7 +224,7 @@ public class Color {
      * Get the red value of the Color
      * @return an integer (0 - 255)
      */
-    public int red() {
+    public int getRed() {
         return this.r;
     }
 
@@ -232,7 +232,7 @@ public class Color {
      * Get the green value of the color
      * @return an integer (0 - 255)
      */
-    public int green() {
+    public int getGreen() {
         return this.g;
     }
 
@@ -240,7 +240,7 @@ public class Color {
      * Get the blue value of the Color
      * @return an integer (0 - 255)
      */
-    public int blue() {
+    public int getBlue() {
         return this.b;
     }
 
@@ -253,6 +253,6 @@ public class Color {
     }
 
     protected java.awt.Color toAWT() {
-        return new java.awt.Color(this.red(), this.green(), this.blue());
+        return new java.awt.Color(this.getRed(), this.getGreen(), this.getBlue());
     }
 }

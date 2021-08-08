@@ -1,6 +1,6 @@
 package javadraw.tests;
 
-import javadraw.*;
+import javadraw.ap.*;
 
 class Drawing extends Window {
 
@@ -12,20 +12,20 @@ class Drawing extends Window {
     Oval mouth;
 
     public void start() {
-        screen.color(Color.GRAY);
+        screen.setColor(Color.GRAY);
 
         Oval face = new Oval(screen, 100, 0, 600, 600, Color.YELLOW);
 
-        Oval eye1 = new Oval(screen, face.x() + face.width() / 6, 200, face.width() / 7, face.height() / 6);
-        Oval eye2 = new Oval(screen, (face.x() + face.width()) - (face.width() / 6) * 2, 200, face.width() / 7, face.height() / 6);
+        Oval eye1 = new Oval(screen, face.getX() + face.getWidth() / 6, 200, face.getWidth() / 7, face.getHeight() / 6);
+        Oval eye2 = new Oval(screen, (face.getX() + face.getWidth()) - (face.getWidth() / 6) * 2, 200, face.getWidth() / 7, face.getHeight() / 6);
 
-        Rectangle eyebrow1 = new Rectangle(screen, eye1.x() - eye1.width() / 2, 200 - 50, 100, 5);
-        eyebrow1.rotation(-16);
+        Rectangle eyebrow1 = new Rectangle(screen, eye1.getX() - eye1.getWidth() / 2, 200 - 50, 100, 5);
+        eyebrow1.setRotation(-16);
 
-        Rectangle eyebrow2 = new Rectangle(screen, eye2.x() - 25 + eye2.width() / 2, 200 - 50, 100, 5);
-        eyebrow2.rotation(16);
+        Rectangle eyebrow2 = new Rectangle(screen, eye2.getX() - 25 + eye2.getWidth() / 2, 200 - 50, 100, 5);
+        eyebrow2.setRotation(16);
 
-        mouth = new Oval(screen, 400 - 50, 400, 85.71, face.height() / 5.5);
+        mouth = new Oval(screen, 400 - 50, 400, 85.71, face.getHeight() / 5.5);
 
         double seconds = 0;
         double fps = 30;
@@ -35,13 +35,13 @@ class Drawing extends Window {
             seconds += 1.0 / fps;
 
             if (1.9 < seconds && seconds < 2) {
-                eye1.height(1);
-                eye2.height(1);
+                eye1.setHeight(1);
+                eye2.setHeight(1);
             }
 
             if (seconds >= 2.1) {
-                eye1.height(face.height() / 6);
-                eye2.height(face.height() / 6);
+                eye1.setHeight(face.getHeight() / 6);
+                eye2.setHeight(face.getHeight() / 6);
                 seconds = 0;
             }
 
@@ -51,8 +51,8 @@ class Drawing extends Window {
     }
 
     public void mouseMove(Location location) {
-        mouth.moveTo(mouthLocation.x() + (location.x() - mouthLocation.x()) / 7,
-                mouthLocation.y() + (location.y() - mouthLocation.y()) / 7);
+        mouth.moveTo(mouthLocation.getX() + (location.getX() - mouthLocation.getX()) / 7,
+                mouthLocation.getY() + (location.getY() - mouthLocation.getY()) / 7);
     }
 
 }

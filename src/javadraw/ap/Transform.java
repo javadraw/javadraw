@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ public class Transform {
      * Get the width of the Transform
      * @return a double representing the width
      */
-    public double width() {
+    public double getWidth() {
         return this.width;
     }
 
@@ -23,7 +23,7 @@ public class Transform {
      * Get the height of the Transform
      * @return a double representing the height
      */
-    public double height() {
+    public double getHeight() {
         return this.height;
     }
 
@@ -31,7 +31,7 @@ public class Transform {
      * Get the angle/rotation of the Transform
      * @return a double representing the angle
      */
-    public double angle() {
+    public double getAngle() {
         return this.angle;
     }
 

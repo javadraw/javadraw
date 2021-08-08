@@ -1,6 +1,6 @@
 package javadraw.tests;
 
-import javadraw.*;
+import javadraw.ap.*;
 import javadraw.internal.ActiveObject;
 
 public class Tester extends Window {
@@ -36,7 +36,7 @@ public class Tester extends Window {
         print("Started, I guess!");
 
         rectangle = new Rectangle(screen, 50, 50, 50, 50);
-        rectangle.height(300);
+        rectangle.setHeight(300);
         triangle = new Triangle(screen, 150, 150, 50, 50, Color.BLUE);
         Polygon polygon = new Polygon(screen, 5, 250, 250, 50, 50);
         new Funny(screen);

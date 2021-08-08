@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.DrawingCanvas;
 
@@ -26,7 +26,7 @@ public class Screen {
      * Get the width of the Screen
      * @return a double
      */
-    public double width() {
+    public double getWidth() {
         return this.window.controller.getWidth();
     }
 
@@ -34,7 +34,7 @@ public class Screen {
      * Get the height of the Screen
      * @return a double
      */
-    public double height() {
+    public double getHeight() {
         return this.window.controller.getHeight();
     }
 
@@ -42,7 +42,7 @@ public class Screen {
      * Get the title of the Screen (Window)
      * @return a String
      */
-    public String title() {
+    public String getTitle() {
         return this.window.controller.getName();
     }
 
@@ -50,7 +50,7 @@ public class Screen {
      * Get the Color of the Screen
      * @return a Color
      */
-    public Color color() {
+    public Color getColor() {
         return new Color(this.canvas.getBackground());
     }
 
@@ -59,7 +59,7 @@ public class Screen {
      * @param color the Color to set to
      * @return the new Color
      */
-    public Color color(Color color) {
+    public Color setColor(Color color) {
         this.canvas.setBackground(color.toAWT());
         return color;
     }
@@ -68,15 +68,15 @@ public class Screen {
      * Get the center of the Screen
      * @return the center of the Screen as a Location
      */
-    public Location center() {
-        return new Location(this.width() / 2, this.height() / 2);
+    public Location getCenter() {
+        return new Location(this.getWidth() / 2, this.getHeight() / 2);
     }
 
     /**
      * Get the top left corner of the Screen
      * @return the top left corner of the Screen as a Location
      */
-    public Location topLeft() {
+    public Location getTopLeft() {
         return new Location(0, 0);
     }
 
@@ -84,31 +84,31 @@ public class Screen {
      * Get the top right corner of the Screen
      * @return the top right corner of the Screen as a Location
      */
-    public Location topRight() {
-        return new Location(this.width(), 0);
+    public Location getTopRight() {
+        return new Location(this.getWidth(), 0);
     }
 
     /**
      * Get the bottom left corner of the Screen
      * @return the bottom left corner of the Screen as a Location
      */
-    public Location bottomLeft() {
-        return new Location(0, this.height());
+    public Location getBottomLeft() {
+        return new Location(0, this.getHeight());
     }
 
     /**
      * Get the bottom right corner of the Screen
      * @return the bottom right corner of the Screen as a Location
      */
-    public Location bottomRight() {
-        return new Location(this.width(), this.height());
+    public Location getBottomRight() {
+        return new Location(this.getWidth(), this.getHeight());
     }
 
     /**
      * Get the Location of the Mouse
      * @return the mouse Location
      */
-    public Location mouse() {
+    public Location getMouse() {
         return new Location(this.window.controller.getMousePosition());
     }
 
@@ -116,7 +116,7 @@ public class Screen {
      * Get all objects on the Screen
      * @return a List of DrawableObjects
      */
-    public List<DrawableObject> objects() {
+    public List<DrawableObject> getObjects() {
         return Arrays.asList(this.objects.toArray(new DrawableObject[0]));
     }
 

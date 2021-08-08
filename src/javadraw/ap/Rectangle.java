@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.FilledRect;
 import javadraw.internal.FramedRect;
@@ -15,12 +15,12 @@ public class Rectangle extends Renderable {
         this.parameterValues = new Object[] {screen, location, width,  height, color, border, fill, rotation, visible};
 
         if(fill) {
-            this.object = new FilledRect(location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
+            this.object = new FilledRect(location.getX(), location.getY(), width, height, rotation, color.toAWT(), screen.canvas);
         } else {
-            this.object = new FramedRect(location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
+            this.object = new FramedRect(location.getX(), location.getY(), width, height, rotation, color.toAWT(), screen.canvas);
         }
 
-        this.visible(visible);
+        this.setVisible(visible);
     }
 
     public Rectangle(Screen screen, double x, double y, double width, double height, Color color, Color border, boolean fill, double rotation, boolean visible) {
@@ -28,7 +28,7 @@ public class Rectangle extends Renderable {
     }
 
     public Rectangle(Screen screen, Location start, Location end, Color color, Color border, boolean fill, double rotation, boolean visible) {
-        this(screen, start, end.x() - start.x(), end.y() - start.y(), color, border, fill, rotation, visible);
+        this(screen, start, end.getX() - start.getX(), end.getY() - start.getY(), color, border, fill, rotation, visible);
     }
 
     public Rectangle(Screen screen, double x, double y, double width, double height, Color color, double rotation) {
@@ -48,7 +48,7 @@ public class Rectangle extends Renderable {
     }
 
     public Rectangle(Screen screen, Location location, double width, double height, Color color, double rotation) {
-        this(screen, location.x(), location.y(), width, height, color, rotation);
+        this(screen, location.getX(), location.getY(), width, height, color, rotation);
     }
 
     public Rectangle(Screen screen, Location location, double width, double height, Color color) {

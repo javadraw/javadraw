@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.Drawable2DInterface;
 import javadraw.internal.ObjectDrawShape;
@@ -68,8 +68,8 @@ public abstract class Renderable implements DrawableObject {
      * Get the x-axis position
      * @return a double
      */
-    public double x() {
-        return location.x();
+    public double getX() {
+        return location.getX();
     }
 
     /**
@@ -77,20 +77,20 @@ public abstract class Renderable implements DrawableObject {
      * @param x the new x-value to set
      * @return the new x-value
      */
-    public double x(double x) {
-        location.x(x);
+    public double setX(double x) {
+        location.setX(x);
 
         this.moveTo(location);
 
-        return location.x();
+        return location.getX();
     }
 
     /**
      * Get the y-axis position
      * @return a double
      */
-    public double y() {
-        return location.y();
+    public double getY() {
+        return location.getY();
     }
 
     /**
@@ -98,19 +98,19 @@ public abstract class Renderable implements DrawableObject {
      * @param y the new y-value to set
      * @return the new y-value
      */
-    public double y(double y) {
-        location.y(y);
+    public double setY(double y) {
+        location.setY(y);
 
         this.moveTo(location);
 
-        return location.y();
+        return location.getY();
     }
 
     /**
      * Get the location of the Renderable
      * @return a Location
      */
-    public Location location() {
+    public Location getLocation() {
         return this.location;
     }
 
@@ -118,7 +118,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the center of the Renderable
      * @return a Location representing the centroid of the Renderable
      */
-    public Location center() {
+    public Location getCenter() {
 //        double sumX = 0;
 //        double sumY = 0;
 //
@@ -136,7 +136,7 @@ public abstract class Renderable implements DrawableObject {
 //
 //        return new Location(centroid_x, centroid_y);
 
-        return new Location(this.x() + this.width() / 2, this.y() + this.height() / 2);
+        return new Location(this.getX() + this.getWidth() / 2, this.getY() + this.getHeight() / 2);
     }
 
     /**
@@ -144,9 +144,9 @@ public abstract class Renderable implements DrawableObject {
      * @param newCenter the new Center Location to move to
      * @return the new center Location
      */
-    public Location center(Location newCenter) {
+    public Location setCenter(Location newCenter) {
         this.moveTo(newCenter);
-        this.move(-this.width() / 2, -this.height() / 2);
+        this.move(-this.getWidth() / 2, -this.getHeight() / 2);
         return newCenter;
     }
 
@@ -156,11 +156,11 @@ public abstract class Renderable implements DrawableObject {
      * @param y the new y-value to move the center to
      * @return the new center Location
      */
-    public Location center(double x, double y) {
+    public Location setCenter(double x, double y) {
         Location newCenter = new Location(x, y);
 
         this.moveTo(newCenter);
-        this.move(-this.width() / 2, -this.height() / 2);
+        this.move(-this.getWidth() / 2, -this.getHeight() / 2);
 
         return newCenter;
     }
@@ -181,8 +181,8 @@ public abstract class Renderable implements DrawableObject {
      * @param location the Location to pull dx and dy from
      */
     public void move(Location location) {
-        this.location.move(location.x(), location.y());
-        this.object.move(location.x(), location.y());
+        this.location.move(location.getX(), location.getY());
+        this.object.move(location.getX(), location.getY());
         updateBorder();
     }
 
@@ -202,7 +202,7 @@ public abstract class Renderable implements DrawableObject {
      * @param location the new Location to move to
      */
     public void moveTo(Location location) {
-        this.moveTo(location.x(), location.y());
+        this.moveTo(location.getX(), location.getY());
         updateBorder();
     }
 
@@ -210,7 +210,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the width of the Renderable
      * @return a double
      */
-    public double width() {
+    public double getWidth() {
         return this.width;
     }
 
@@ -219,7 +219,7 @@ public abstract class Renderable implements DrawableObject {
      * @param width the width to set to
      * @return the new width
      */
-    public double width(double width) {
+    public double setWidth(double width) {
         this.width = width;
         if(this.object instanceof Resizable2DInterface) {
             ((Resizable2DInterface) this.object).setWidth(width);
@@ -236,7 +236,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the height of the Renderable
      * @return a double
      */
-    public double height() {
+    public double getHeight() {
         return this.height;
     }
 
@@ -245,7 +245,7 @@ public abstract class Renderable implements DrawableObject {
      * @param height the height to set to
      * @return the new height
      */
-    public double height(double height) {
+    public double setHeight(double height) {
         this.height = height;
         if(this.object instanceof Resizable2DInterface) {
             ((Resizable2DInterface) this.object).setHeight(height);
@@ -262,7 +262,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the rotation of the Renderable
      * @return a double (in degrees)
      */
-    public double rotation() {
+    public double getRotation() {
         return this.angle;
     }
 
@@ -271,7 +271,7 @@ public abstract class Renderable implements DrawableObject {
      * @param rotation the rotation to set to (in degrees)
      * @return the new rotation (in degrees)
      */
-    public double rotation(double rotation) {
+    public double setRotation(double rotation) {
         this.angle = rotation;
         this.object.setRotation(rotation);
 
@@ -297,8 +297,8 @@ public abstract class Renderable implements DrawableObject {
      * @return the angle (in degrees) as a double between the Renderable and the passed Location
      */
     public double angleTo(Location location) {
-        double theta = Math.atan2(location.y() - this.y(), location.x() - this.x())
-                - Math.toRadians(this.rotation()) + Math.PI / 2;
+        double theta = Math.atan2(location.getY() - this.getY(), location.getX() - this.getX())
+                - Math.toRadians(this.getRotation()) + Math.PI / 2;
 
         return Math.toDegrees(theta);
     }
@@ -309,7 +309,7 @@ public abstract class Renderable implements DrawableObject {
      * @return the angle (in degrees) as a double between this Renderable and the passed Renderable
      */
     public double angleTo(Renderable renderable) {
-        return this.angleTo(renderable.location());
+        return this.angleTo(renderable.getLocation());
     }
 
     /**
@@ -326,14 +326,14 @@ public abstract class Renderable implements DrawableObject {
      * @param renderable the Renderable to look towards
      */
     public void lookAt(Renderable renderable) {
-        this.lookAt(renderable.location());
+        this.lookAt(renderable.getLocation());
     }
 
     /**
      * Get the Color of the Renderable
      * @return a Color
      */
-    public Color color() {
+    public Color getColor() {
         return this.color;
     }
 
@@ -342,7 +342,7 @@ public abstract class Renderable implements DrawableObject {
      * @param color the new Color to set to
      * @return the new Color
      */
-    public Color color(Color color) {
+    public Color setColor(Color color) {
         this.color = color;
         this.object.setColor(color.toAWT());
 
@@ -353,7 +353,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the Border Color of the Renderable
      * @return a Color
      */
-    public Color border() {
+    public Color getBorder() {
         return this.borderColor;
     }
 
@@ -362,7 +362,7 @@ public abstract class Renderable implements DrawableObject {
      * @param color the Color to set to
      * @return the new Border Color value
      */
-    public Color border(Color color) {
+    public Color setBorder(Color color) {
         this.borderColor = color;
 
         this.updateBorder(color);
@@ -376,9 +376,9 @@ public abstract class Renderable implements DrawableObject {
      * @param fill the new fill value
      * @return the new Border Color
      */
-    public Color border(Color color, boolean fill) {
+    public Color setBorder(Color color, boolean fill) {
         this.borderColor = color;
-        this.fill(fill);
+        this.setFill(fill);
 
         this.updateBorder(color);
 
@@ -389,7 +389,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the fill value of the Renderable
      * @return whether or not the Renderable has fill (Filled vs Framed)
      */
-    public boolean fill() {
+    public boolean isFill() {
         return this.fill;
     }
 
@@ -398,7 +398,7 @@ public abstract class Renderable implements DrawableObject {
      * @param fill (boolean) the new fill value
      * @return the new fill value
      */
-    public boolean fill(boolean fill) {
+    public boolean setFill(boolean fill) {
         this.fill = fill;
         ((ObjectDrawShape) this.object).setFilled(fill);
 
@@ -442,7 +442,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the visibility value of the Renderable
      * @return whether or not the Renderable is visible
      */
-    public boolean visible() {
+    public boolean isVisible() {
         return this.visible;
     }
 
@@ -451,7 +451,7 @@ public abstract class Renderable implements DrawableObject {
      * @param visible the visibility value
      * @return the new visibility value
      */
-    public boolean visible(boolean visible) {
+    public boolean setVisible(boolean visible) {
         this.visible = visible;
 
         if(visible) {
@@ -475,11 +475,11 @@ public abstract class Renderable implements DrawableObject {
      * Get the vertices of the Renderable
      * @return an array of Locations representing the vertices.
      */
-    public Location[] vertices() {
+    public Location[] getVertices() {
         SneakyThrow.sneakyThrow(new NotImplementedException());
 
-        AffineTransform transform = AffineTransform.getRotateInstance(this.rotation(),
-                this.x() + this.width() / 2, this.y() + this.height() / 2);
+        AffineTransform transform = AffineTransform.getRotateInstance(this.getRotation(),
+                this.getX() + this.getWidth() / 2, this.getY() + this.getHeight() / 2);
 
         PathIterator iterator = this.object.getShape().getPathIterator(transform);
 
@@ -563,7 +563,7 @@ public abstract class Renderable implements DrawableObject {
             throw new RuntimeException("Something happened while trying to execute Renderable.clone()!");
         }
 
-        renderable.border(this.borderColor);
+        renderable.setBorder(this.borderColor);
 
         return renderable;
     }
@@ -572,7 +572,7 @@ public abstract class Renderable implements DrawableObject {
      * Get the Transform (width, height, and angle) of the Renderable
      * @return the Transform
      */
-    public Transform transform() {
+    public Transform getTransform() {
         return new Transform(this.width, this.height, this.angle);
     }
 
@@ -581,12 +581,12 @@ public abstract class Renderable implements DrawableObject {
      * @param transform the Transform to set to
      * @return the new Transform
      */
-    public Transform transform(Transform transform) {
-        this.width(transform.width);
-        this.height(transform.height);
-        this.rotation(transform.angle);
+    public Transform setTransform(Transform transform) {
+        this.setWidth(transform.width);
+        this.setHeight(transform.height);
+        this.setRotation(transform.angle);
 
-        return this.transform();
+        return this.getTransform();
     }
 
     /**
@@ -596,8 +596,8 @@ public abstract class Renderable implements DrawableObject {
      * @param angle the angle to set to
      * @return the new Transform created by the passed values.
      */
-    public Transform transform(double width, double height, double angle) {
-        return this.transform(new Transform(width, height, angle));
+    public Transform setTransform(double width, double height, double angle) {
+        return this.setTransform(new Transform(width, height, angle));
     }
 
 }

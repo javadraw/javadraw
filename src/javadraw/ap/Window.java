@@ -1,9 +1,7 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.WindowController;
 import javadraw.internal.WindowThread;
-
-import java.lang.reflect.Constructor;
 
 /**
  * The primary thread-controller for the application, the Window passes inputs and is meant to be the parent of any javaDraw program.

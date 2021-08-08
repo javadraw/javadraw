@@ -1,7 +1,4 @@
-package javadraw;
-
-import javadraw.internal.FilledPolygon;
-import javadraw.internal.FramedPolygon;
+package javadraw.ap;
 
 /**
  * Represents any Triangular object on Screen. Renders with the base at the bottom.
@@ -20,9 +17,9 @@ public class Triangle extends Renderable {
 //            this.object = new FramedPolygon(3, location.x(), location.y(), width, height, rotation, color.toAWT(), screen.canvas);
 //        }
 
-        this.object = new javadraw.internal.Triangle(location.x(), location.y(), width, height, rotation, fill, color.toAWT(), screen.canvas);
+        this.object = new javadraw.internal.Triangle(location.getX(), location.getY(), width, height, rotation, fill, color.toAWT(), screen.canvas);
 
-        this.visible(visible);
+        this.setVisible(visible);
     }
 
     public Triangle(Screen screen, double x, double y, double width, double height, Color color, Color border, boolean fill, double rotation, boolean visible) {
@@ -30,7 +27,7 @@ public class Triangle extends Renderable {
     }
 
     public Triangle(Screen screen, Location start, Location end, Color color, Color border, boolean fill, double rotation, boolean visible) {
-        this(screen, start, end.x() - start.x(), end.y() - start.y(), color, border, fill, rotation, visible);
+        this(screen, start, end.getX() - start.getX(), end.getY() - start.getY(), color, border, fill, rotation, visible);
     }
 
     public Triangle(Screen screen, double x, double y, double width, double height, Color color, double rotation) {
@@ -50,7 +47,7 @@ public class Triangle extends Renderable {
     }
 
     public Triangle(Screen screen, Location location, double width, double height, Color color, double rotation) {
-        this(screen, location.x(), location.y(), width, height, color, rotation);
+        this(screen, location.getX(), location.getY(), width, height, color, rotation);
     }
 
     public Triangle(Screen screen, Location location, double width, double height, Color color) {

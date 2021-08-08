@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 /**
  * An Object which is Drawable on the Screen (Renderables and non-Renderables).
@@ -9,33 +9,33 @@ public interface DrawableObject {
      * Get the x-coordinate of the Object.
      * @return a double x-coordinate
      */
-    double x();
+    double getX();
 
     /**
      * Get the y-coordinate of the Object
      * @return a double y-coordinate
      */
-    double y();
+    double getY();
 
     /**
      * Set the x-coordinate of the Object
      * @param x the new x-coordinate to set to
      * @return the new x-coordinate
      */
-    double x(double x);
+    double setX(double x);
 
     /**
      * Set thte y-coordinate of the Object
      * @param y the y-coordinate to set to
      * @return the new y-coordinate
      */
-    double y(double y);
+    double setY(double y);
 
     /**
      * Get the Location of the Object
      * @return a Location
      */
-    Location location();
+    Location getLocation();
 
     /**
      * Move the Object by a specified distance, (dx, dy).

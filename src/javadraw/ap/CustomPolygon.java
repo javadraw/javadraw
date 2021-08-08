@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.FilledPolygon;
 import javadraw.internal.FramedPolygon;
@@ -22,12 +22,12 @@ public class CustomPolygon extends Renderable implements CustomRenderable {
         this.vertices = vertices;
 
         if(fill) {
-            this.object = new FilledPolygon(trueVertices, location.x(), location.y(), rotation, color.toAWT(), screen.canvas);
+            this.object = new FilledPolygon(trueVertices, location.getX(), location.getY(), rotation, color.toAWT(), screen.canvas);
         } else {
-            this.object = new FramedPolygon(trueVertices, location.x(), location.y(), rotation, color.toAWT(), screen.canvas);
+            this.object = new FramedPolygon(trueVertices, location.getX(), location.getY(), rotation, color.toAWT(), screen.canvas);
         }
 
-        this.visible(visible);
+        this.setVisible(visible);
     }
 
     public CustomPolygon(Screen screen, Location[] vertices, Color color, double rotation) {
@@ -47,24 +47,24 @@ public class CustomPolygon extends Renderable implements CustomRenderable {
     }
 
     private void calculateLocation(Location[] vertices) {
-        double xMin = vertices[0].x();
-        double xMax = vertices[0].x();
-        double yMin = vertices[0].y();
-        double yMax = vertices[0].y();
+        double xMin = vertices[0].getX();
+        double xMax = vertices[0].getX();
+        double yMin = vertices[0].getY();
+        double yMax = vertices[0].getY();
 
 
         for (Location loc : vertices) {
-            if (loc.x() < xMin)
-                xMin = loc.x();
+            if (loc.getX() < xMin)
+                xMin = loc.getX();
 
-            if(loc.x() > xMax)
-                xMax = loc.x();
+            if(loc.getX() > xMax)
+                xMax = loc.getX();
 
-            if (loc.y() < yMin)
-                yMin = loc.y();
+            if (loc.getY() < yMin)
+                yMin = loc.getY();
 
-            if (loc.y() > yMax)
-                yMax = loc.y();
+            if (loc.getY() > yMax)
+                yMax = loc.getY();
         }
 
         this.location = new Location(xMin, yMin);

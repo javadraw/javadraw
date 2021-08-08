@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import java.awt.*;
 
@@ -30,7 +30,7 @@ public class Location {
      * Get the x-axis value of the Location
      * @return a double
      */
-    public double x() {
+    public double getX() {
         return this.location.getDoubleX();
     }
 
@@ -39,8 +39,8 @@ public class Location {
      * @param x the new x-value to set
      * @return the new x value
      */
-    public double x(double x) {
-        this.location = new javadraw.internal.Location(x, this.y());
+    public double setX(double x) {
+        this.location = new javadraw.internal.Location(x, this.getY());
         return this.location.getDoubleX();
     }
 
@@ -48,7 +48,7 @@ public class Location {
      * Get the y-axis value of the Location
      * @return a double
      */
-    public double y() {
+    public double getY() {
         return this.location.getDoubleY();
     }
 
@@ -57,8 +57,8 @@ public class Location {
      * @param y the new y-value to set
      * @return the new y value
      */
-    public double y(double y) {
-        this.location = new javadraw.internal.Location(this.x(), y);
+    public double setY(double y) {
+        this.location = new javadraw.internal.Location(this.getX(), y);
         return this.location.getDoubleY();
     }
 
@@ -86,7 +86,7 @@ public class Location {
      * @param location the new Location to move to
      */
     public void moveTo(Location location) {
-        this.location = new javadraw.internal.Location(location.x(), location.y());
+        this.location = new javadraw.internal.Location(location.getX(), location.getY());
     }
 
     /**
@@ -96,7 +96,7 @@ public class Location {
      * @return the distance between this Location and the one passed.
      */
     public double distance(double x, double y) {
-        return Math.sqrt(Math.pow((x - this.x()), 2) + Math.pow((y - this.y()), 2));
+        return Math.sqrt(Math.pow((x - this.getX()), 2) + Math.pow((y - this.getY()), 2));
     }
 
     /**
@@ -105,14 +105,14 @@ public class Location {
      * @return thet distance between this Location and the one passed.
      */
     public double distance(Location location) {
-        return this.distance(location.x(), location.y());
+        return this.distance(location.getX(), location.getY());
     }
 
     @Override
     public String toString() {
         return "Location{" +
-                "x=" + x() + ", " +
-                "y=" + y() +
+                "x=" + getX() + ", " +
+                "y=" + getY() +
                 '}';
     }
 }

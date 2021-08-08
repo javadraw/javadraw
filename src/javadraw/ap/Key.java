@@ -1,10 +1,9 @@
-package javadraw;
+package javadraw.ap;
 
-import javadraw.errors.InvalidArgumentException;
+import javadraw.ap.errors.InvalidArgumentException;
 import javadraw.internal.SneakyThrow;
 
 import java.lang.reflect.Field;
-import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -120,7 +119,7 @@ public class Key {
      * Get the character/String represented by the Key
      * @return a String
      */
-    public String character() {
+    public String getCharacter() {
         return character;
     }
 

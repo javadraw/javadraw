@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.DrawableStrokeInterface;
 import javadraw.internal.Location;
@@ -62,7 +62,7 @@ public class Border {
         private Shape shape;
 
         public BorderObject(Renderable parent, Color color, double width) {
-            super(parent.location().location, false, color.toAWT(), parent.screen.canvas);
+            super(parent.getLocation().location, false, color.toAWT(), parent.screen.canvas);
 
             this.parent = parent;
             this.shape = parent.object.getShape();
@@ -75,7 +75,7 @@ public class Border {
             super.moveTo(location);
         }
 
-        public void moveTo(javadraw.Location location) {
+        public void moveTo(javadraw.ap.Location location) {
             this.moveTo(location.location);
         }
 

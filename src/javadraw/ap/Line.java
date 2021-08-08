@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.Drawable1DInterface;
 
@@ -67,35 +67,35 @@ public class Line implements DrawableObject {
         this(screen, x1, y1, x2, y2, Color.BLACK);
     }
 
-    public double x() {
-        return this.pos1().x();
+    public double getX() {
+        return this.getPos1().getX();
     }
 
-    public double x(double x) {
-        this.moveTo(x, this.pos1().y());
+    public double setX(double x) {
+        this.moveTo(x, this.getPos1().getY());
 
-        return this.x();
+        return this.getX();
     }
 
-    public double y() {
-        return this.pos1().y();
+    public double getY() {
+        return this.getPos1().getY();
     }
 
-    public double y(double y) {
-        this.moveTo(this.pos1().x(), y);
+    public double setY(double y) {
+        this.moveTo(this.getPos1().getX(), y);
 
-        return this.y();
+        return this.getY();
     }
 
-    public Location location() {
-        return new Location(this.x(), this.y());
+    public Location getLocation() {
+        return new Location(this.getX(), this.getY());
     }
 
     /**
      * Get the first position of the Line
      * @return a Location
      */
-    public Location pos1() {
+    public Location getPos1() {
         return this.location1;
     }
 
@@ -104,7 +104,7 @@ public class Line implements DrawableObject {
      * @param pos1 the new first position to set
      * @return the new first position as a Location
      */
-    public Location pos1(Location pos1) {
+    public Location setPos1(Location pos1) {
         this.location1 = pos1;
 
         this.object.setStart(location1.location);
@@ -115,7 +115,7 @@ public class Line implements DrawableObject {
      * Get the second position of the Line
      * @return a Location
      */
-    public Location pos2() {
+    public Location getPos2() {
         return this.location2;
     }
 
@@ -124,7 +124,7 @@ public class Line implements DrawableObject {
      * @param pos2 the new second position to set
      * @return the new second position as a Location
      */
-    public Location pos2(Location pos2) {
+    public Location setPos2(Location pos2) {
         this.location2 = pos2;
 
         this.object.setEnd(location2.location);
@@ -135,7 +135,7 @@ public class Line implements DrawableObject {
      * Get the Color of the Line
      * @return the Color
      */
-    public Color color() {
+    public Color getColor() {
         return this.color;
     }
 
@@ -144,7 +144,7 @@ public class Line implements DrawableObject {
      * @param color the new Color to set
      * @return the new Color
      */
-    public Color color(Color color) {
+    public Color setColor(Color color) {
         this.color = color;
         this.object.setColor(color.toAWT());
 
@@ -167,7 +167,7 @@ public class Line implements DrawableObject {
      * @param location the Location to pull dx and dy from
      */
     public void move(Location location) {
-        this.move(location.x(), location.y());
+        this.move(location.getX(), location.getY());
     }
 
     /**
@@ -186,7 +186,7 @@ public class Line implements DrawableObject {
      * @param location the Location to move to
      */
     public void moveTo(Location location) {
-        this.moveTo(location.x(), location.y());
+        this.moveTo(location.getX(), location.getY());
     }
 
     /**
@@ -207,7 +207,7 @@ public class Line implements DrawableObject {
      * Get the visibility of the Line
      * @return a boolean
      */
-    public boolean visible() {
+    public boolean isVisible() {
         return visible;
     }
 
@@ -216,7 +216,7 @@ public class Line implements DrawableObject {
      * @param visible the new visibility setting (boolean)
      * @return the new visibility setting
      */
-    public boolean visible(boolean visible) {
+    public boolean setVisible(boolean visible) {
         if(visible) {
             this.object.show();
         } else {

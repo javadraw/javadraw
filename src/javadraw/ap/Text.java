@@ -1,6 +1,6 @@
-package javadraw;
+package javadraw.ap;
 
-import javadraw.errors.InvalidArgumentException;
+import javadraw.ap.errors.InvalidArgumentException;
 import javadraw.internal.SneakyThrow;
 
 /**
@@ -75,22 +75,22 @@ public class Text extends Renderable {
     }
 
     public Text(Screen screen, Object text, Location location, Color color) {
-        this(screen, text, location.x(), location.y(), color);
+        this(screen, text, location.getX(), location.getY(), color);
     }
 
     public Text(Screen screen, Object text, Location location, double rotation) {
-        this(screen, text, location.x(), location.y(), rotation);
+        this(screen, text, location.getX(), location.getY(), rotation);
     }
 
     public Text(Screen screen, Object text, Location location) {
-        this(screen, text, location.x(), location.y());
+        this(screen, text, location.getX(), location.getY());
     }
 
     /**
      * Get the String displayed by the Text
      * @return what's displayed by the Text
      */
-    public String text() {
+    public String getText() {
         return ((javadraw.internal.Text) this.object).getText();
     }
 
@@ -99,7 +99,7 @@ public class Text extends Renderable {
      * @param text the new String to display
      * @return the new String passed
      */
-    public String text(String text) {
+    public String setText(String text) {
         ((javadraw.internal.Text) this.object).setText(text);
 
         this.update();
@@ -110,7 +110,7 @@ public class Text extends Renderable {
      * Get the font displayed by the Text
      * @return a String representing the name of the Font
      */
-    public String font() {
+    public String getFont() {
         return ((javadraw.internal.Text) this.object).getFont().getName();
     }
 
@@ -119,18 +119,18 @@ public class Text extends Renderable {
      * @param font the new font to set
      * @return the new font passed
      */
-    public String font(String font) {
+    public String setFont(String font) {
         ((javadraw.internal.Text) this.object).setFont(font);
 
         this.update();
-        return this.font();
+        return this.getFont();
     }
 
     /**
      * Get the font-size of the Text displayed
      * @return the font size (as an integer)
      */
-    public int size() {
+    public int getSize() {
         return ((javadraw.internal.Text) this.object).getFont().getSize();
     }
 
@@ -139,18 +139,18 @@ public class Text extends Renderable {
      * @param size the new font-size to set to
      * @return the new font-size
      */
-    public int size(int size) {
+    public int setSize(int size) {
         ((javadraw.internal.Text) this.object).setFontSize(size);
 
         this.update();
-        return this.size();
+        return this.getSize();
     }
 
     /**
      * Get the alignment of the Text displayed
      * @return the alignment, as a String. Could be: "LEFT", "CENTER", or "RIGHT".
      */
-    public String align() {
+    public String getAlign() {
         double alignment = ((javadraw.internal.Text) this.object).getHorizontalAlignment();
         if(alignment == javadraw.internal.Text.LEFT) {
             return "LEFT";
@@ -166,7 +166,7 @@ public class Text extends Renderable {
      * @param align the new alignment to set to (either "LEFT", "CENTER", or "RIGHT", case insensitive).
      * @return the new alignment
      */
-    public String align(String align) {
+    public String setAlign(String align) {
         double alignment = javadraw.internal.Text.LEFT;
 
         if (align.equalsIgnoreCase("left")) {
@@ -189,7 +189,7 @@ public class Text extends Renderable {
      * Get whether the Text displayed is bold or not
      * @return the Text's bold-state
      */
-    public boolean bold() {
+    public boolean isBold() {
         return ((javadraw.internal.Text) this.object).getFont().isBold();
     }
 
@@ -198,7 +198,7 @@ public class Text extends Renderable {
      * @param bold the new bold-state to be set
      * @return the new bold state
      */
-    public boolean bold(boolean bold) {
+    public boolean setBold(boolean bold) {
         ((javadraw.internal.Text) this.object).setBold(bold);
         this.update();
         return bold;
@@ -208,7 +208,7 @@ public class Text extends Renderable {
      * Get whether the Text displayed is italic or not
      * @return the Text's italic-state
      */
-    public boolean italic() {
+    public boolean isItalic() {
         return ((javadraw.internal.Text) this.object).getFont().isItalic();
     }
 
@@ -217,7 +217,7 @@ public class Text extends Renderable {
      * @param italic the new italic-state to be set
      * @return the new italic state
      */
-    public boolean italic(boolean italic) {
+    public boolean setItalic(boolean italic) {
         ((javadraw.internal.Text) this.object).setItalic(italic);
         this.update();
         return italic;

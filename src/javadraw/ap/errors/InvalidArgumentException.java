@@ -1,4 +1,4 @@
-package javadraw.errors;
+package javadraw.ap.errors;
 
 public class InvalidArgumentException extends Exception {
 

@@ -1,6 +1,6 @@
 package javadraw.tests;
 
-import javadraw.*;
+import javadraw.ap.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ class SortingTest extends Window {
         Oval oval1 = new Oval(screen, 300, 350, 50, 50, Color.BLUE);
         Oval oval2 = new Oval(screen, 200, 250, 50, 75, Color.YELLOW);
 
-        oval2.x(500);
+        oval2.setX(500);
 
         for(int i = 0; i < 10; i++) {
             list.add(new Rectangle(screen, i * 100, 400, 75, 75, Color.random()));
@@ -45,11 +45,11 @@ class SortingTest extends Window {
         for(int i = 0; i < list.size(); i++) {
             Renderable shape = list.get(i);
 
-            if(shape.height() > maxHeight) {
-                maxHeight = shape.height();
+            if(shape.getHeight() > maxHeight) {
+                maxHeight = shape.getHeight();
             }
 
-            if(x + shape.width() > screen.width() - 10) {
+            if(x + shape.getWidth() > screen.getWidth() - 10) {
                 y += maxHeight + 10;
                 x = 10;
             }
@@ -57,7 +57,7 @@ class SortingTest extends Window {
             // shape.moveTo(x, y);
             locations[i] = new Location(x, y);
 
-            x += shape.width() + 10;
+            x += shape.getWidth() + 10;
         }
 
         // Quick little Linear Animation
@@ -70,12 +70,12 @@ class SortingTest extends Window {
                 Renderable shape = list.get(i);
                 Location location = locations[i];
 
-                if ((int) shape.x() == (int) location.x() && (int) shape.y() == (int) location.y()) {
+                if ((int) shape.getX() == (int) location.getX() && (int) shape.getY() == (int) location.getY()) {
                     continue;
                 }
 
-                double dx = (location.x() - shape.x()) * ((double) count / maxCount);
-                double dy = (location.y() - shape.y()) * ((double) count / maxCount);
+                double dx = (location.getX() - shape.getX()) * ((double) count / maxCount);
+                double dy = (location.getY() - shape.getY()) * ((double) count / maxCount);
                 System.out.println("Moving by: " + dx + ", " + dy + "; by percentage: " + (double) count / maxCount);
 
                 count++;

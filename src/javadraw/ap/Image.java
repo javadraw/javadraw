@@ -1,4 +1,4 @@
-package javadraw;
+package javadraw.ap;
 
 import javadraw.internal.VisibleImage;
 
@@ -46,18 +46,18 @@ public class Image extends Renderable implements CustomRenderable {
     }
 
     public Image(Screen screen, String path, Location location) {
-        this(screen, path, location.x(), location.y());
+        this(screen, path, location.getX(), location.getY());
     }
 
     public Image(Screen screen, String path, Location location, double width, double height) {
-        this(screen, path, location.x(), location.y(), width, height);
+        this(screen, path, location.getX(), location.getY(), width, height);
     }
 
     /**
      * Get the path registered to this Image.
      * @return a String representing the relative/absolute path originally passed to the constructor.
      */
-    public String path() {
+    public String getPath() {
         return this.path;
     }
 
