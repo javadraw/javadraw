@@ -14,6 +14,9 @@ public class Window {
     WindowController controller;
     protected Screen screen;
 
+    // Default this to true.
+    boolean oldInput = true;
+
     /**
      * Open the Window with a specified width, height and title
      * @param width in pixels
@@ -142,12 +145,20 @@ public class Window {
 
             @Override
             public void onMousePress(int button, javadraw.internal.Location point) {
-                Window.this.mouseDown(button, new Location(point));
+                Location location = new Location(point);
+
+                Window.this.mouseDown(button, location);
+                Window.this.mouseDown(location, button);
+                Window.this.mouseDown(location);
             }
 
             @Override
             public void onMouseRelease(int button, javadraw.internal.Location point) {
-                Window.this.mouseUp(button, new Location(point));
+                Location location = new Location(point);
+
+                Window.this.mouseUp(button, location);
+                Window.this.mouseUp(location, button);
+                Window.this.mouseUp(location);
             }
 
             @Override
@@ -156,7 +167,11 @@ public class Window {
 
             @Override
             public void onMouseDrag(int button, javadraw.internal.Location point) {
-                Window.this.mouseDrag(button, new Location(point));
+                Location location = new Location(point);
+
+                Window.this.mouseDrag(button, location);
+                Window.this.mouseDrag(location, button);
+                Window.this.mouseDrag(location);
             }
 
             @Override
@@ -208,30 +223,72 @@ public class Window {
 
     /**
      * MouseDown event, called when a button on the mouse is pressed
+     * @deprecated Please use argument order (Location, int) or (Location)
+     *
      * @param button the button that was pressed (1-3), 1 for left, 2 middle, 3 right.
      * @param location the Location of the Mouse on the Screen when the event occurred.
      */
-    public void mouseDown(int button, Location location) {
+    @Deprecated
+    public void mouseDown(int button, Location location) {}
 
-    }
+    /**
+     * MouseDown event, called when a button on the mouse is pressed
+     * @param button the button that was pressed (1-3), 1 for left, 2 middle, 3 right.
+     * @param location the Location of the Mouse on the Screen when the event occurred.
+     */
+    public void mouseDown(Location location, int button) {}
+
+    /**
+     * MouseDown event, called when a button on the mouse is pressed
+     * @param location the Location of the Mouse on the Screen when the event occurred.
+     */
+    public void mouseDown(Location location) {}
+
+    /**
+     * MouseUp event, called when a button on the mouse is released
+     * @deprecated Please use argument order (Location, int) or (Location)
+     *
+     * @param button the button that was released (1-3), 1 for left, 2 middle, 3 right.
+     * @param location the Location of the Mouse on the Screen when the event occurred.
+     */
+    @Deprecated
+    public void mouseUp(int button, Location location) {}
 
     /**
      * MouseUp event, called when a button on the mouse is released
      * @param button the button that was released (1-3), 1 for left, 2 middle, 3 right.
      * @param location the Location of the Mouse on the Screen when the event occurred.
      */
-    public void mouseUp(int button, Location location) {
+    public void mouseUp(Location location, int button) {}
 
-    }
+    /**
+     * MouseUp event, called when a button on the mouse is released
+     * @param location the Location of the Mouse on the Screen when the event occurred.
+     */
+    public void mouseUp(Location location) {}
+
+    /**
+     * MouseDrag event, called when a button on the mouse is pressed and held while the mouse moves.
+     * @deprecated Please use argument order (Location, int) or (Location)
+     *
+     * @param button the button that was held (1-3), 1 for left, 2 middle, 3 right.
+     * @param location the Location of the Mouse on the Screen when the event occur(s).
+     */
+    @Deprecated
+    public void mouseDrag(int button, Location location) {}
 
     /**
      * MouseDrag event, called when a button on the mouse is pressed and held while the mouse moves.
      * @param button the button that was held (1-3), 1 for left, 2 middle, 3 right.
      * @param location the Location of the Mouse on the Screen when the event occur(s).
      */
-    public void mouseDrag(int button, Location location) {
+    public void mouseDrag(Location location, int button) {}
 
-    }
+    /**
+     * MouseDrag event, called when a button on the mouse is pressed and held while the mouse moves.
+     * @param location the Location of the Mouse on the Screen when the event occur(s).
+     */
+    public void mouseDrag(Location location) {}
 
     /**
      * MouseMove event, called when the mouse moves on the Screen

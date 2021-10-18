@@ -22,7 +22,7 @@ public class CustomPolygon extends Renderable implements CustomRenderable {
         this.vertices = vertices;
 
         if(fill) {
-            this.object = new FilledPolygon(trueVertices, location.x(), location.y(), rotation, color.toAWT(), screen.canvas);
+            this.object = new FilledPolygon(trueVertices, location.x(), location.y(), color.toAWT(), screen.canvas);
         } else {
             this.object = new FramedPolygon(trueVertices, location.x(), location.y(), rotation, color.toAWT(), screen.canvas);
         }
