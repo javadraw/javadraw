@@ -163,7 +163,6 @@ public class Slider extends Renderable {
     public void setValue(double newValue) {
         value = ensureRange(newValue, minValue, maxValue);
         double ofSlider = fractionOf(getRemaining(), minValue, maxValue);
-        System.out.println();
         handle.center(slider.center().x(), height * ofSlider + location.y());
 
         updateFilled();
