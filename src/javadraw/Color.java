@@ -211,9 +211,9 @@ public class Color {
         float[] bg = bgColor.toAWT().getColorComponents(null);
         float alpha = a / 100f;
 
-        this.r = (int) Math.min(((1 - source[0]) * bg[0]) + (a * source[0]), 255);
-        this.g = (int) Math.min(((1 - source[1]) * bg[0]) + (a * source[1]), 255);
-        this.b = (int) Math.min(((1 - source[2]) * bg[2]) + (a * source[2]), 255);
+        this.r = (int) Math.min((((1 - alpha) * bg[0]) + (alpha * source[0])) * 255, 255);
+        this.g = (int) Math.min((((1 - alpha) * bg[1]) + (alpha * source[1])) * 255, 255);
+        this.b = (int) Math.min((((1 - alpha) * bg[2]) + (alpha * source[2])) * 255, 255);
     }
 
     /**

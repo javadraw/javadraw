@@ -7,7 +7,7 @@ public class Slider extends Renderable {
     private final Rectangle filled;
     private final Oval handle;
 
-    private Color bgColor;
+    protected Color bgColor;
     private final double minValue;
     private final double maxValue;
     private double value;
@@ -15,10 +15,24 @@ public class Slider extends Renderable {
     private boolean disabled;
     private boolean selected;
 
+    /**
+     * Returns the number bound to the given range.
+     * @param value number to keep in range
+     * @param min lower bound
+     * @param max upper bound
+     * @return the value if in range otherwise the min or max
+     */
     private static double ensureRange(double value, double min, double max) {
         return Math.min(Math.max(value, min), max);
     }
 
+    /**
+     * Returns the percent of how close a number is to an upper bound from a lower bound.
+     * @param value the number to check
+     * @param min the number the checked value is coming from
+     * @param max the number the checked value is headed towards
+     * @return a number in range 0-1 showing how far the number is from min to max
+     */
     private static double fractionOf(double value, double min, double max) {
         return (value - min) / (max - min);
     }
@@ -34,10 +48,13 @@ public class Slider extends Renderable {
         this.value = startValue;
         this.disabled = false;
 
-        slider = new Rectangle(screen, location, width, height, secondaryColor(), borderColor, fill, 0, visible);
-        filled = new Rectangle(screen, location, width, 0, color, borderColor, fill, 0, visible);
-        handle = new Oval(screen, location, width + 10, width + 10, color, borderColor, fill, 0, visible);
+        slider = new Rectangle(screen, location.x(), location.y(), width, height, secondaryColor(), null, fill, 0, visible);
+        slider.border(borderColor);
+        filled = new Rectangle(screen, location.x(), location.y(), width, 0, color, null, fill, 0, visible);
+        filled.border(borderColor);
+        handle = new Oval(screen, location.x(), location.y(), width + 10, width + 10, color, null, fill, 0, visible);
         handle.center(slider.center()); // just to set the x, the y will be changed in the initial setValue
+        handle.border(borderColor);
 
         setValue(startValue);
     }
@@ -91,6 +108,22 @@ public class Slider extends Renderable {
     }
 
     /**
+     * Get the minimum value of the slider.
+     * @return minimum value of the slider
+     */
+    public double getMinValue() {
+        return minValue;
+    }
+
+    /**
+     * Get the maximum value of the slider.
+     * @return maximum value of the slider
+     */
+    public double getMaxValue() {
+        return maxValue;
+    }
+
+    /**
      * Get the value of this slider, a double representing where the handle is on the slider.
      * @return the value of this slider
      */
@@ -123,20 +156,21 @@ public class Slider extends Renderable {
     }
 
     /**
-     * Set the slider's value to a specific number.
+     * Set the slider's value to a specific number and update the display.
      * If the entered value is not in range <code>minValue</code>-<code>maxValue</code> it will be placed at <code>minValue</code> or <code>maxValue</code>.
      * @param newValue desired value to set the slider to
      */
     public void setValue(double newValue) {
         value = ensureRange(newValue, minValue, maxValue);
         double ofSlider = fractionOf(getRemaining(), minValue, maxValue);
+        System.out.println();
         handle.center(slider.center().x(), height * ofSlider + location.y());
 
         updateFilled();
     }
 
     /**
-     * Slides the slider by a certain number.
+     * Adds a specified amount to add to the slider's value and updates the display.
      * This slides by value, NOT pixels.
      * @param amount how much to add to the slider value
      */
@@ -152,7 +186,7 @@ public class Slider extends Renderable {
     public void slideTo(double y) {
         handle.center(slider.center().x(), ensureRange(y, location.y(), location.y() + height));
 
-        double ofSlider = maxValue - fractionOf(handle.center().y(), location.y(), location.y() + height);
+        double ofSlider = 1 - fractionOf(handle.center().y(), location.y(), location.y() + height);
         value = ofSlider * (maxValue - minValue) + minValue;
 
         updateFilled();
@@ -175,7 +209,10 @@ public class Slider extends Renderable {
         slideTo(handle.center().y() - y);
     }
 
-    private void updateFilled() {
+    /**
+     * Update the space below the handle to be filled in with full opacity.
+     */
+    protected void updateFilled() {
         filled.y(handle.center().y());
         filled.height(location.y() + height - filled.y());
     }
@@ -192,13 +229,12 @@ public class Slider extends Renderable {
     /**
      * To be used in {@link Window#mouseDrag(Location, int) Window's mouseDrag} to automatically set up sliding.
      * @param location from {@link Window#mouseDrag(Location, int)}  Window's mouseDrag}
-     * @param button from {@link Window#mouseDrag(Location, int)}  Window's mouseDrag}
      * @see Window#mouseDrag(Location, int)
      * @see #mouseDown(Location, int)
-     * @see #mouseUp(Location, int)
+     * @see #mouseUp(int)
      */
-    public void mouseDrag(Location location, int button) {
-        if (button == 1 && selected && !disabled) slideTo(location);
+    public void mouseDrag(Location location) {
+        if (selected && !disabled) slideTo(location);
     }
 
     /**
@@ -206,8 +242,8 @@ public class Slider extends Renderable {
      * @param location from {@link Window#mouseDown(Location, int) Window's mouseDown}
      * @param button from {@link Window#mouseDown(Location, int) Window's mouseDown}
      * @see Window#mouseDown(Location, int)
-     * @see #mouseDrag(Location, int)
-     * @see #mouseUp(Location, int)
+     * @see #mouseDrag(Location)
+     * @see #mouseUp(int)
      */
     public void mouseDown(Location location, int button) {
         if (button == 1 && !selected && !disabled && handle.contains(location)) selected = true;
@@ -215,17 +251,19 @@ public class Slider extends Renderable {
 
     /**
      * To be used in {@link Window#mouseUp(Location, int) Window's mouseUp} to automatically set up sliding.
-     * @param location from {@link Window#mouseUp(Location, int) Window's mouseUp}
      * @param button from {@link Window#mouseUp(Location, int) Window's mouseUp}
      * @see Window#mouseUp(Location, int) 
-     * @see #mouseDrag(Location, int) 
+     * @see #mouseDrag(Location)
      * @see #mouseDown(Location, int) 
      */
-    public void mouseUp(Location location, int button) {
+    public void mouseUp(int button) {
         if (button == 1 && selected) selected = false;
     }
 
-    private Color secondaryColor() {
+    /**
+     * @return Get the background color of the slider as suggested in <a href="https://material.io/components/sliders#theming">Material Design</a>.
+     */
+    protected Color secondaryColor() {
         return new Color(color.red(), color.green(), color.blue(), 38, bgColor);
     }
 
@@ -253,6 +291,7 @@ public class Slider extends Renderable {
         slider.moveTo(x, y);
         filled.moveTo(x, y);
         handle.moveTo(x, y);
+        setValue(value);
     }
 
     @Override
@@ -262,6 +301,7 @@ public class Slider extends Renderable {
         filled.width(width);
         handle.width(width + 10);
         handle.height(width + 10);
+        updateFilled();
         return width;
     }
 
@@ -270,8 +310,7 @@ public class Slider extends Renderable {
         this.height = height;
         slider.height(height);
         filled.height(height);
-        handle.height(height + 10);
-        handle.width(height + 10);
+        setValue(value); // update the handle location
         return height;
     }
 
@@ -306,6 +345,7 @@ public class Slider extends Renderable {
 
     @Override
     public void front() {
+        // TODO: removes border
         slider.front();
         filled.front();
         handle.front();
@@ -313,6 +353,7 @@ public class Slider extends Renderable {
 
     @Override
     public void back() {
+        // TODO: puts handle border behind other borders
         handle.back();
         filled.back();
         slider.back();
@@ -350,14 +391,14 @@ public class Slider extends Renderable {
     }
 
     @Override
-    public void updateBorder() {
+    protected void updateBorder() {
         slider.updateBorder();
         filled.updateBorder();
         handle.updateBorder();
     }
 
     @Override
-    public void updateBorder(Color color) {
+    protected void updateBorder(Color color) {
         slider.updateBorder(color);
         filled.updateBorder(color);
         handle.updateBorder(color);
