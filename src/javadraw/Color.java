@@ -199,6 +199,24 @@ public class Color {
     }
 
     /**
+     * Get a color from RGBA on a certain background
+     * @param r red value
+     * @param g green value
+     * @param b blue value
+     * @param a alpha = opacity percent (0-100)
+     * @param bgColor background color
+     */
+    public Color(int r, int g, int b, int a, Color bgColor) {
+        float[] source = new java.awt.Color(r, g, b).getColorComponents(null);
+        float[] bg = bgColor.toAWT().getColorComponents(null);
+        float alpha = a / 100f;
+
+        this.r = (int) Math.min(((1 - source[0]) * bg[0]) + (a * source[0]), 255);
+        this.g = (int) Math.min(((1 - source[1]) * bg[0]) + (a * source[1]), 255);
+        this.b = (int) Math.min(((1 - source[2]) * bg[2]) + (a * source[2]), 255);
+    }
+
+    /**
      * Duplicate a color
      * @param color Color to duplicate
      */
